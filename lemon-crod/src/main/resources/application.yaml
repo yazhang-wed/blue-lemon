@@ -1,0 +1,10 @@
+# 启用 debug 模式
+debug: true
+
+server:
+  # 修改启动端口号
+  port: 19000
+
+# 日志记录相关配置文件
+logging:
+  config: classpath:log4j2/log4j2.yml
