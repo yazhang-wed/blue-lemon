@@ -1,4 +1,4 @@
-package org.lemon.lemoncrod.controller;
+package org.lemon.lemonadmin.controller;
 
 import javax.validation.Valid;
 

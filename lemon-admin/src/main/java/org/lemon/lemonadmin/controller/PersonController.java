@@ -1,4 +1,4 @@
-package org.lemon.lemoncrod.controller;
+package org.lemon.lemonadmin.controller;
 
 import org.lemon.lemoncrod.annotation.EncapsulationTemplates;
 import org.lemon.lemoncrod.bean.Person;
