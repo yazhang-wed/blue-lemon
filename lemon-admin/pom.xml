@@ -37,6 +37,11 @@
             <groupId>org.lemon</groupId>
             <artifactId>lemon-crod</artifactId>
         </dependency>
+        <!--安全模块-->
+        <dependency>
+            <groupId>org.lemon</groupId>
+            <artifactId>lemon-safety</artifactId>
+        </dependency>
     </dependencies>
 
     <build>

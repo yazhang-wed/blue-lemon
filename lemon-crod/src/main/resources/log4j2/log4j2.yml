@@ -83,9 +83,14 @@ Configuration:
           ThresholdFilter:
             # 打印INFO、WARN、ERROR、DEBUG（常见的info.log文件的标配）
             - level: INFO
-              onMatch: NEUTRAL
+              onMatch: ACCEPT
               onMismatch: NEUTRAL
-
+            - level: WARN
+              onMatch: DENY
+              onMismatch: NEUTRAL
+            - level: ERROR
+              onMatch: DENY
+              onMismatch: NEUTRAL
         Policies:
           # 输出到文件，超过124 MB归档
           SizeBasedTriggeringPolicy:

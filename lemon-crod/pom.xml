@@ -18,6 +18,13 @@
     </properties>
 
     <dependencies>
+        <!-- 框架公共模块 -->
+        <dependency>
+            <groupId>org.lemon</groupId>
+            <artifactId>lemon-common</artifactId>
+            <scope>compile</scope>
+        </dependency>
+
         <!--springboot web 依赖-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -62,11 +69,34 @@
             <optional>true</optional>
         </dependency>
 
-        <!-- 框架公共模块 -->
+        <!-- 阿里数据库连接池 -->
         <dependency>
-            <groupId>org.lemon</groupId>
-            <artifactId>lemon-common</artifactId>
-            <scope>compile</scope>
+            <groupId>com.alibaba</groupId>
+            <artifactId>druid-spring-boot-starter</artifactId>
+            <version>1.2.8</version>
+        </dependency>
+
+        <!-- mybatis-plus -->
+        <dependency>
+            <groupId>com.baomidou</groupId>
+            <artifactId>mybatis-plus-boot-starter</artifactId>
+            <version>3.4.3</version>
+        </dependency>
+
+        <!--mysql-->
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+        </dependency>
+
+        <!--redis依赖-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-redis</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-pool2</artifactId>
         </dependency>
     </dependencies>
 </project>

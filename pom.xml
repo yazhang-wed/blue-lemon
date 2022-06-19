@@ -13,6 +13,7 @@
         <module>lemon-crod</module>
         <module>lemon-admin</module>
         <module>lemon-common</module>
+        <module>lemon-safety</module>
     </modules>
 
     <properties>
@@ -26,6 +27,13 @@
     <dependencyManagement>
         <dependencies>
 
+            <!--项目安全模块-->
+            <dependency>
+                <groupId>org.lemon</groupId>
+                <artifactId>lemon-safety</artifactId>
+                <version>${lemon-version}</version>
+            </dependency>
+
             <!--项目核心模块-->
             <dependency>
                 <groupId>org.lemon</groupId>
@@ -33,7 +41,7 @@
                 <version>${lemon-version}</version>
             </dependency>
 
-            <!--项目公共方法模块-->
+            <!--项目公共模块-->
             <dependency>
                 <groupId>org.lemon</groupId>
                 <artifactId>lemon-common</artifactId>
