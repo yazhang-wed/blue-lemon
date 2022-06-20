@@ -3,7 +3,6 @@ package org.lemon.lemoncrod.handler;
 import org.lemon.lemoncrod.common.Result;
 import org.lemon.lemoncrod.common.ResultCode;
 import org.lemon.lemoncrod.common.ResultResponse;
-import org.lemon.lemoncrod.exception.AuthenticationException;
 import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -20,18 +19,6 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 @RestControllerAdvice
 public class GlobalExceptionHandler {
-
-    /**
-     * 认证异常
-     *
-     * @param e
-     * @return
-     */
-    @ExceptionHandler(AuthenticationException.class)
-    public Result<?> UnNoException(AuthenticationException e) {
-        log.error(e.getMessage(), e);
-        return ResultResponse.failure(ResultCode.UNAUTHORIZED, e.getMessage());
-    }
 
     /**
      * @param e 未知异常捕获

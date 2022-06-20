@@ -14,12 +14,15 @@ import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.access.AccessDeniedHandler;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
+import lombok.extern.slf4j.Slf4j;
+
 /**
  * Security 安全配置类
  *
  * @author LBK
  * @create 2022-05-24 23:14
  */
+@Slf4j
 @Configuration
 public class SecurityConfig {
 
@@ -38,13 +41,16 @@ public class SecurityConfig {
      */
     private final AccessDeniedHandler accessDeniedHandler;
 
-    public SecurityConfig(JwtAuthenticationTokenFilter jwtAuthenticationTokenFilter, AuthenticationEntryPoint authenticationEntryPoint, AccessDeniedHandler accessDeniedHandler) {
+    public SecurityConfig(JwtAuthenticationTokenFilter jwtAuthenticationTokenFilter,
+                          AuthenticationEntryPoint authenticationEntryPoint,
+                          AccessDeniedHandler accessDeniedHandler) {
         this.jwtAuthenticationTokenFilter = jwtAuthenticationTokenFilter;
         this.authenticationEntryPoint = authenticationEntryPoint;
         this.accessDeniedHandler = accessDeniedHandler;
     }
 
     @Bean
+    @SuppressWarnings("all")
     SecurityFilterChain filterChain(HttpSecurity httpSecurity) throws Exception {
         //关闭csrf
         httpSecurity.csrf().disable()
@@ -79,6 +85,7 @@ public class SecurityConfig {
      * @throws Exception
      */
     @Bean
+    @SuppressWarnings("all")
     public AuthenticationManager authenticationManager(AuthenticationConfiguration authenticationConfiguration) throws Exception {
         return authenticationConfiguration.getAuthenticationManager();
     }

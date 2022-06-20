@@ -2,9 +2,6 @@ package org.lemon.lemoncrod.handler;
 
 import java.util.Map;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
 import org.lemon.lemoncrod.common.Result;
 import org.lemon.lemoncrod.common.ResultCode;
 import org.lemon.lemoncrod.common.ResultResponse;
@@ -13,7 +10,8 @@ import org.springframework.boot.web.servlet.error.DefaultErrorAttributes;
 import org.springframework.cglib.beans.BeanMap;
 import org.springframework.stereotype.Component;
 import org.springframework.web.context.request.WebRequest;
-import org.springframework.web.servlet.ModelAndView;
+
+import lombok.extern.slf4j.Slf4j;
 
 
 /**
@@ -23,21 +21,8 @@ import org.springframework.web.servlet.ModelAndView;
  * @create 2021-12-03 15:02
  */
 @Component
+@Slf4j
 public class GlobalErrorHandler extends DefaultErrorAttributes {
-
-    /**
-     * 自定义错误返回页面
-     *
-     * @param request
-     * @param response
-     * @param handler
-     * @param ex
-     * @return
-     */
-    @Override
-    public ModelAndView resolveException(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex) {
-        return super.resolveException(request, response, handler, ex);
-    }
 
     /**
      * 自定义错误返回格式
@@ -49,7 +34,9 @@ public class GlobalErrorHandler extends DefaultErrorAttributes {
     @Override
     public BeanMap getErrorAttributes(WebRequest webRequest, ErrorAttributeOptions options) {
         Map<String, Object> errorAttributes = super.getErrorAttributes(webRequest, options);
-        Result<?> result = ResultResponse.failure(ResultCode.NOT_FOUND, errorAttributes.get("path"));
+        errorAttributes.put("异常原因", "Jwt令牌解析失败，请输入正确的Jwt令牌!");
+        Result<?> result = ResultResponse.failure(ResultCode.NOT_FOUND, errorAttributes);
+        log.error(errorAttributes.get("message").toString(), errorAttributes.get("trace"));
         return BeanMap.create(result);
     }
 }

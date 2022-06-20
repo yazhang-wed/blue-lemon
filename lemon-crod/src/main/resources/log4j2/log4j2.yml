@@ -83,14 +83,9 @@ Configuration:
           ThresholdFilter:
             # 打印INFO、WARN、ERROR、DEBUG（常见的info.log文件的标配）
             - level: INFO
-              onMatch: ACCEPT
+              onMatch: NEUTRAL
               onMismatch: NEUTRAL
-            - level: WARN
-              onMatch: DENY
-              onMismatch: NEUTRAL
-            - level: ERROR
-              onMatch: DENY
-              onMismatch: NEUTRAL
+
         Policies:
           # 输出到文件，超过124 MB归档
           SizeBasedTriggeringPolicy:
@@ -172,7 +167,9 @@ Configuration:
         - ref: CONSOLE
         - ref: ROLLING_FILE
         - ref: EXCEPTION_ROLLING_FILE
-#        - ref: DEBUG_ROLLING_FILE
+        - ref: DEBUG_ROLLING_FILE
+        - ref: FRAMEWORK_ROLLING_FILE
+
     Logger:
       # 输出错误的格式
       - name: exception
